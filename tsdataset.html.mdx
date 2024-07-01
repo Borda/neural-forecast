@@ -8,7 +8,7 @@ title: PyTorch Dataset/Loader
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/Nixtla/neuralforecast/blob/main/neuralforecast/tsdataset.py#L19"
+href="https://github.com/Nixtla/neuralforecast/blob/main/neuralforecast/tsdataset.py#L20"
 target="_blank" style={{ float: "right", fontSize: "smaller" }}>source</a>
 
 ### TimeSeriesLoader
@@ -17,7 +17,7 @@ target="_blank" style={{ float: "right", fontSize: "smaller" }}>source</a>
 >  TimeSeriesLoader (dataset, **kwargs)
 > ```
 
-TimeSeriesLoader DataLoader. [Source
+\*TimeSeriesLoader DataLoader. [Source
 code](https://github.com/Nixtla/neuralforecast1/blob/main/neuralforecast/tsdataset.py).
 
 Small change to PyTorch’s Data loader. Combines a dataset and a sampler,
@@ -34,12 +34,12 @@ batch to load (default: 1).<br/> `shuffle`: (bool, optional): set to
 `False`).<br/> `sampler`: (Sampler or Iterable, optional): defines the
 strategy to draw samples from the dataset.<br/> Can be any `Iterable`
 with `__len__` implemented. If specified, `shuffle` must not be
-specified.<br/>
+specified.<br/>\*
 
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/Nixtla/neuralforecast/blob/main/neuralforecast/tsdataset.py#L76"
+href="https://github.com/Nixtla/neuralforecast/blob/main/neuralforecast/tsdataset.py#L77"
 target="_blank" style={{ float: "right", fontSize: "smaller" }}>source</a>
 
 ### TimeSeriesDataset
@@ -50,7 +50,7 @@ target="_blank" style={{ float: "right", fontSize: "smaller" }}>source</a>
 >                     static_cols=None, sorted=False)
 > ```
 
-An abstract class representing a :class:`Dataset`.
+\*An abstract class representing a :class:`Dataset`.
 
 All datasets that represent a map from keys to data samples should
 subclass it. All subclasses should overwrite :meth:`__getitem__`,
@@ -66,12 +66,12 @@ of samples.
 .. note:: :class:`~torch.utils.data.DataLoader` by default constructs an
 index sampler that yields integral indices. To make it work with a
 map-style dataset with non-integral indices/keys, a custom sampler must
-be provided.
+be provided.\*
 
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/Nixtla/neuralforecast/blob/main/neuralforecast/tsdataset.py#L345"
+href="https://github.com/Nixtla/neuralforecast/blob/main/neuralforecast/tsdataset.py#L375"
 target="_blank" style={{ float: "right", fontSize: "smaller" }}>source</a>
 
 ### TimeSeriesDataModule
@@ -82,7 +82,7 @@ target="_blank" style={{ float: "right", fontSize: "smaller" }}>source</a>
 >                        drop_last=False, shuffle_train=True)
 > ```
 
-A DataModule standardizes the training, val, test splits, data
+\*A DataModule standardizes the training, val, test splits, data
 preparation and transforms. The main advantage is consistent data
 splits, data preparation and transforms across models.
 
@@ -116,10 +116,14 @@ class MyDataModule(L.LightningDataModule):
     def test_dataloader(self):
         return data.DataLoader(self.test)
 
+    def on_exception(self, exception):
+        # clean up state after the trainer faced an exception
+        ...
+
     def teardown(self):
         # clean up state after the trainer stops, delete files...
         # called on every process in DDP
-        ...
+        ...*
 ```
 
 ```python

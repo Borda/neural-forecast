@@ -22,7 +22,7 @@ them across CPU/GPU/TPU devices with Pytorch Lightning.
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/Nixtla/neuralforecast/blob/main/neuralforecast/losses/pytorch.py#L38"
+href="https://github.com/Nixtla/neuralforecast/blob/main/neuralforecast/losses/pytorch.py#L50"
 target="_blank" style={{ float: "right", fontSize: "smaller" }}>source</a>
 
 ### BasePointLoss
@@ -31,12 +31,12 @@ target="_blank" style={{ float: "right", fontSize: "smaller" }}>source</a>
 >  BasePointLoss (horizon_weight, outputsize_multiplier, output_names)
 > ```
 
-Base class for point loss functions.
+\*Base class for point loss functions.
 
 **Parameters:**<br/> `horizon_weight`: Tensor of size h, weight for each
 timestamp of the forecasting window. <br/> `outputsize_multiplier`:
 Multiplier for the output size. <br/> `output_names`: Names of the
-outputs. <br/>
+outputs. <br/>\*
 
 # 1. Scale-dependent Errors
 
@@ -47,7 +47,7 @@ These metrics are on the same scale as the data.
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/Nixtla/neuralforecast/blob/main/neuralforecast/losses/pytorch.py#L85"
+href="https://github.com/Nixtla/neuralforecast/blob/main/neuralforecast/losses/pytorch.py#L97"
 target="_blank" style={{ float: "right", fontSize: "smaller" }}>source</a>
 
 ### MAE.\_\_init\_\_
@@ -56,7 +56,7 @@ target="_blank" style={{ float: "right", fontSize: "smaller" }}>source</a>
 >  MAE.__init__ (horizon_weight=None)
 > ```
 
-Mean Absolute Error
+\*Mean Absolute Error
 
 Calculates Mean Absolute Error between `y` and `y_hat`. MAE measures the
 relative prediction accuracy of a forecasting method by calculating the
@@ -66,12 +66,12 @@ averages these devations over the length of the series.
 $$ \mathrm{MAE}(\mathbf{y}_{\tau}, \mathbf{\hat{y}}_{\tau}) = \frac{1}{H} \sum^{t+H}_{\tau=t+1} |y_{\tau} - \hat{y}_{\tau}| $$
 
 **Parameters:**<br/> `horizon_weight`: Tensor of size h, weight for each
-timestamp of the forecasting window. <br/>
+timestamp of the forecasting window. <br/>\*
 
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/Nixtla/neuralforecast/blob/main/neuralforecast/losses/pytorch.py#L106"
+href="https://github.com/Nixtla/neuralforecast/blob/main/neuralforecast/losses/pytorch.py#L118"
 target="_blank" style={{ float: "right", fontSize: "smaller" }}>source</a>
 
 ### MAE.\_\_call\_\_
@@ -81,13 +81,13 @@ target="_blank" style={{ float: "right", fontSize: "smaller" }}>source</a>
 >                mask:Optional[torch.Tensor]=None)
 > ```
 
-**Parameters:**<br/> `y`: tensor, Actual values.<br/> `y_hat`: tensor,
+\***Parameters:**<br/> `y`: tensor, Actual values.<br/> `y_hat`: tensor,
 Predicted values.<br/> `mask`: tensor, Specifies datapoints to consider
 in loss.<br/>
 
 **Returns:**<br/>
 [`mae`](https://Nixtla.github.io/neuralforecast/losses.numpy.html#mae):
-tensor (single value).
+tensor (single value).\*
 
 ![](/neural-forecast/imgs_losses/mae_loss.png)
 
@@ -96,7 +96,7 @@ tensor (single value).
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/Nixtla/neuralforecast/blob/main/neuralforecast/losses/pytorch.py#L126"
+href="https://github.com/Nixtla/neuralforecast/blob/main/neuralforecast/losses/pytorch.py#L138"
 target="_blank" style={{ float: "right", fontSize: "smaller" }}>source</a>
 
 ### MSE.\_\_init\_\_
@@ -105,7 +105,7 @@ target="_blank" style={{ float: "right", fontSize: "smaller" }}>source</a>
 >  MSE.__init__ (horizon_weight=None)
 > ```
 
-Mean Squared Error
+\*Mean Squared Error
 
 Calculates Mean Squared Error between `y` and `y_hat`. MSE measures the
 relative prediction accuracy of a forecasting method by calculating the
@@ -115,12 +115,12 @@ and averages these devations over the length of the series.
 $$ \mathrm{MSE}(\mathbf{y}_{\tau}, \mathbf{\hat{y}}_{\tau}) = \frac{1}{H} \sum^{t+H}_{\tau=t+1} (y_{\tau} - \hat{y}_{\tau})^{2} $$
 
 **Parameters:**<br/> `horizon_weight`: Tensor of size h, weight for each
-timestamp of the forecasting window. <br/>
+timestamp of the forecasting window. <br/>\*
 
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/Nixtla/neuralforecast/blob/main/neuralforecast/losses/pytorch.py#L147"
+href="https://github.com/Nixtla/neuralforecast/blob/main/neuralforecast/losses/pytorch.py#L159"
 target="_blank" style={{ float: "right", fontSize: "smaller" }}>source</a>
 
 ### MSE.\_\_call\_\_
@@ -130,13 +130,13 @@ target="_blank" style={{ float: "right", fontSize: "smaller" }}>source</a>
 >                mask:Optional[torch.Tensor]=None)
 > ```
 
-**Parameters:**<br/> `y`: tensor, Actual values.<br/> `y_hat`: tensor,
+\***Parameters:**<br/> `y`: tensor, Actual values.<br/> `y_hat`: tensor,
 Predicted values.<br/> `mask`: tensor, Specifies datapoints to consider
 in loss.<br/>
 
 **Returns:**<br/>
 [`mse`](https://Nixtla.github.io/neuralforecast/losses.numpy.html#mse):
-tensor (single value).
+tensor (single value).\*
 
 ![](/neural-forecast/imgs_losses/mse_loss.png)
 
@@ -145,7 +145,7 @@ tensor (single value).
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/Nixtla/neuralforecast/blob/main/neuralforecast/losses/pytorch.py#L167"
+href="https://github.com/Nixtla/neuralforecast/blob/main/neuralforecast/losses/pytorch.py#L179"
 target="_blank" style={{ float: "right", fontSize: "smaller" }}>source</a>
 
 ### RMSE.\_\_init\_\_
@@ -154,7 +154,7 @@ target="_blank" style={{ float: "right", fontSize: "smaller" }}>source</a>
 >  RMSE.__init__ (horizon_weight=None)
 > ```
 
-Root Mean Squared Error
+\*Root Mean Squared Error
 
 Calculates Root Mean Squared Error between `y` and `y_hat`. RMSE
 measures the relative prediction accuracy of a forecasting method by
@@ -167,12 +167,12 @@ share a common scale. RMSE has a direct connection to the L2 norm.
 $$ \mathrm{RMSE}(\mathbf{y}_{\tau}, \mathbf{\hat{y}}_{\tau}) = \sqrt{\frac{1}{H} \sum^{t+H}_{\tau=t+1} (y_{\tau} - \hat{y}_{\tau})^{2}} $$
 
 **Parameters:**<br/> `horizon_weight`: Tensor of size h, weight for each
-timestamp of the forecasting window. <br/>
+timestamp of the forecasting window. <br/>\*
 
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/Nixtla/neuralforecast/blob/main/neuralforecast/losses/pytorch.py#L191"
+href="https://github.com/Nixtla/neuralforecast/blob/main/neuralforecast/losses/pytorch.py#L203"
 target="_blank" style={{ float: "right", fontSize: "smaller" }}>source</a>
 
 ### RMSE.\_\_call\_\_
@@ -182,13 +182,13 @@ target="_blank" style={{ float: "right", fontSize: "smaller" }}>source</a>
 >                 mask:Optional[torch.Tensor]=None)
 > ```
 
-**Parameters:**<br/> `y`: tensor, Actual values.<br/> `y_hat`: tensor,
+\***Parameters:**<br/> `y`: tensor, Actual values.<br/> `y_hat`: tensor,
 Predicted values.<br/> `mask`: tensor, Specifies datapoints to consider
 in loss.<br/>
 
 **Returns:**<br/>
 [`rmse`](https://Nixtla.github.io/neuralforecast/losses.numpy.html#rmse):
-tensor (single value).
+tensor (single value).\*
 
 ![](/neural-forecast/imgs_losses/rmse_loss.png)
 
@@ -201,7 +201,7 @@ These metrics are unit-free, suitable for comparisons across series.
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/Nixtla/neuralforecast/blob/main/neuralforecast/losses/pytorch.py#L212"
+href="https://github.com/Nixtla/neuralforecast/blob/main/neuralforecast/losses/pytorch.py#L224"
 target="_blank" style={{ float: "right", fontSize: "smaller" }}>source</a>
 
 ### MAPE.\_\_init\_\_
@@ -210,7 +210,7 @@ target="_blank" style={{ float: "right", fontSize: "smaller" }}>source</a>
 >  MAPE.__init__ (horizon_weight=None)
 > ```
 
-Mean Absolute Percentage Error
+\*Mean Absolute Percentage Error
 
 Calculates Mean Absolute Percentage Error between `y` and `y_hat`. MAPE
 measures the relative prediction accuracy of a forecasting method by
@@ -226,12 +226,12 @@ timestamp of the forecasting window. <br/>
 
 **References:**<br/> [Makridakis S., “Accuracy measures: theoretical and
 practical
-concerns”.](https://www.sciencedirect.com/science/article/pii/0169207093900793)
+concerns”.](https://www.sciencedirect.com/science/article/pii/0169207093900793)\*
 
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/Nixtla/neuralforecast/blob/main/neuralforecast/losses/pytorch.py#L237"
+href="https://github.com/Nixtla/neuralforecast/blob/main/neuralforecast/losses/pytorch.py#L249"
 target="_blank" style={{ float: "right", fontSize: "smaller" }}>source</a>
 
 ### MAPE.\_\_call\_\_
@@ -241,13 +241,13 @@ target="_blank" style={{ float: "right", fontSize: "smaller" }}>source</a>
 >                 mask:Optional[torch.Tensor]=None)
 > ```
 
-**Parameters:**<br/> `y`: tensor, Actual values.<br/> `y_hat`: tensor,
+\***Parameters:**<br/> `y`: tensor, Actual values.<br/> `y_hat`: tensor,
 Predicted values.<br/> `mask`: tensor, Specifies date stamps per serie to
 consider in loss.<br/>
 
 **Returns:**<br/>
 [`mape`](https://Nixtla.github.io/neuralforecast/losses.numpy.html#mape):
-tensor (single value).
+tensor (single value).\*
 
 ![](/neural-forecast/imgs_losses/mape_loss.png)
 
@@ -256,7 +256,7 @@ tensor (single value).
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/Nixtla/neuralforecast/blob/main/neuralforecast/losses/pytorch.py#L259"
+href="https://github.com/Nixtla/neuralforecast/blob/main/neuralforecast/losses/pytorch.py#L271"
 target="_blank" style={{ float: "right", fontSize: "smaller" }}>source</a>
 
 ### SMAPE.\_\_init\_\_
@@ -265,7 +265,7 @@ target="_blank" style={{ float: "right", fontSize: "smaller" }}>source</a>
 >  SMAPE.__init__ (horizon_weight=None)
 > ```
 
-Symmetric Mean Absolute Percentage Error
+\*Symmetric Mean Absolute Percentage Error
 
 Calculates Symmetric Mean Absolute Percentage Error between `y` and
 `y_hat`. SMAPE measures the relative prediction accuracy of a
@@ -283,12 +283,12 @@ timestamp of the forecasting window. <br/>
 
 **References:**<br/> [Makridakis S., “Accuracy measures: theoretical and
 practical
-concerns”.](https://www.sciencedirect.com/science/article/pii/0169207093900793)
+concerns”.](https://www.sciencedirect.com/science/article/pii/0169207093900793)\*
 
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/Nixtla/neuralforecast/blob/main/neuralforecast/losses/pytorch.py#L286"
+href="https://github.com/Nixtla/neuralforecast/blob/main/neuralforecast/losses/pytorch.py#L298"
 target="_blank" style={{ float: "right", fontSize: "smaller" }}>source</a>
 
 ### SMAPE.\_\_call\_\_
@@ -298,13 +298,13 @@ target="_blank" style={{ float: "right", fontSize: "smaller" }}>source</a>
 >                  mask:Optional[torch.Tensor]=None)
 > ```
 
-**Parameters:**<br/> `y`: tensor, Actual values.<br/> `y_hat`: tensor,
+\***Parameters:**<br/> `y`: tensor, Actual values.<br/> `y_hat`: tensor,
 Predicted values.<br/> `mask`: tensor, Specifies date stamps per serie to
 consider in loss.<br/>
 
 **Returns:**<br/>
 [`smape`](https://Nixtla.github.io/neuralforecast/losses.numpy.html#smape):
-tensor (single value).
+tensor (single value).\*
 
 # 3. Scale-independent Errors
 
@@ -315,7 +315,7 @@ These metrics measure the relative improvements versus baselines.
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/Nixtla/neuralforecast/blob/main/neuralforecast/losses/pytorch.py#L308"
+href="https://github.com/Nixtla/neuralforecast/blob/main/neuralforecast/losses/pytorch.py#L320"
 target="_blank" style={{ float: "right", fontSize: "smaller" }}>source</a>
 
 ### MASE.\_\_init\_\_
@@ -324,7 +324,7 @@ target="_blank" style={{ float: "right", fontSize: "smaller" }}>source</a>
 >  MASE.__init__ (seasonality:int, horizon_weight=None)
 > ```
 
-Mean Absolute Scaled Error Calculates the Mean Absolute Scaled Error
+\*Mean Absolute Scaled Error Calculates the Mean Absolute Scaled Error
 between `y` and `y_hat`. MASE measures the relative prediction accuracy
 of a forecasting method by comparinng the mean absolute errors of the
 prediction and the observed value against the mean absolute errors of
@@ -343,12 +343,12 @@ measures of forecast
 accuracy”.](https://www.sciencedirect.com/science/article/pii/s0169207006000239)<br/>
 [Spyros Makridakis, Evangelos Spiliotis, Vassilios Assimakopoulos, “The
 M4 Competition: 100,000 time series and 61 forecasting
-methods”.](https://www.sciencedirect.com/science/article/pii/s0169207019301128)
+methods”.](https://www.sciencedirect.com/science/article/pii/s0169207019301128)\*
 
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/Nixtla/neuralforecast/blob/main/neuralforecast/losses/pytorch.py#L335"
+href="https://github.com/Nixtla/neuralforecast/blob/main/neuralforecast/losses/pytorch.py#L347"
 target="_blank" style={{ float: "right", fontSize: "smaller" }}>source</a>
 
 ### MASE.\_\_call\_\_
@@ -358,7 +358,7 @@ target="_blank" style={{ float: "right", fontSize: "smaller" }}>source</a>
 >                 y_insample:torch.Tensor, mask:Optional[torch.Tensor]=None)
 > ```
 
-**Parameters:**<br/> `y`: tensor (batch_size, output_size), Actual
+\***Parameters:**<br/> `y`: tensor (batch_size, output_size), Actual
 values.<br/> `y_hat`: tensor (batch_size, output_size)), Predicted
 values.<br/> `y_insample`: tensor (batch_size, input_size), Actual
 insample Seasonal Naive predictions.<br/> `mask`: tensor, Specifies date
@@ -366,7 +366,7 @@ stamps per serie to consider in loss.<br/>
 
 **Returns:**<br/>
 [`mase`](https://Nixtla.github.io/neuralforecast/losses.numpy.html#mase):
-tensor (single value).
+tensor (single value).\*
 
 ![](/neural-forecast/imgs_losses/mase_loss.png)
 
@@ -375,7 +375,7 @@ tensor (single value).
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/Nixtla/neuralforecast/blob/main/neuralforecast/losses/pytorch.py#L364"
+href="https://github.com/Nixtla/neuralforecast/blob/main/neuralforecast/losses/pytorch.py#L376"
 target="_blank" style={{ float: "right", fontSize: "smaller" }}>source</a>
 
 ### relMSE.\_\_init\_\_
@@ -384,7 +384,7 @@ target="_blank" style={{ float: "right", fontSize: "smaller" }}>source</a>
 >  relMSE.__init__ (y_train, horizon_weight=None)
 > ```
 
-Relative Mean Squared Error Computes Relative Mean Squared Error
+\*Relative Mean Squared Error Computes Relative Mean Squared Error
 (relMSE), as proposed by Hyndman & Koehler (2006) as an alternative to
 percentage errors, to avoid measure unstability.
 $$
@@ -403,12 +403,12 @@ Forecasting, Volume 22, Issue
 [Kin G. Olivares, O. Nganba Meetei, Ruijun Ma, Rohan Reddy, Mengfei Cao,
 Lee Dicker. “Probabilistic Hierarchical Forecasting with Deep Poisson
 Mixtures. Submitted to the International Journal Forecasting, Working
-paper available at arxiv.](https://arxiv.org/pdf/2110.13179.pdf)
+paper available at arxiv.](https://arxiv.org/pdf/2110.13179.pdf)\*
 
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/Nixtla/neuralforecast/blob/main/neuralforecast/losses/pytorch.py#L391"
+href="https://github.com/Nixtla/neuralforecast/blob/main/neuralforecast/losses/pytorch.py#L403"
 target="_blank" style={{ float: "right", fontSize: "smaller" }}>source</a>
 
 ### relMSE.\_\_call\_\_
@@ -418,7 +418,7 @@ target="_blank" style={{ float: "right", fontSize: "smaller" }}>source</a>
 >                   mask:Optional[torch.Tensor]=None)
 > ```
 
-**Parameters:**<br/> `y`: tensor (batch_size, output_size), Actual
+\***Parameters:**<br/> `y`: tensor (batch_size, output_size), Actual
 values.<br/> `y_hat`: tensor (batch_size, output_size)), Predicted
 values.<br/> `y_insample`: tensor (batch_size, input_size), Actual
 insample Seasonal Naive predictions.<br/> `mask`: tensor, Specifies date
@@ -426,7 +426,7 @@ stamps per serie to consider in loss.<br/>
 
 **Returns:**<br/>
 [`relMSE`](https://Nixtla.github.io/neuralforecast/losses.pytorch.html#relmse):
-tensor (single value).
+tensor (single value).\*
 
 # 4. Probabilistic Errors
 
@@ -447,7 +447,7 @@ non-symmetrically deviation, producing under/over estimation.
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/Nixtla/neuralforecast/blob/main/neuralforecast/losses/pytorch.py#L418"
+href="https://github.com/Nixtla/neuralforecast/blob/main/neuralforecast/losses/pytorch.py#L430"
 target="_blank" style={{ float: "right", fontSize: "smaller" }}>source</a>
 
 ### QuantileLoss.\_\_init\_\_
@@ -456,7 +456,7 @@ target="_blank" style={{ float: "right", fontSize: "smaller" }}>source</a>
 >  QuantileLoss.__init__ (q, horizon_weight=None)
 > ```
 
-Quantile Loss
+\*Quantile Loss
 
 Computes the quantile loss between `y` and `y_hat`. QL measures the
 deviation of a quantile forecast. By weighting the absolute deviation in
@@ -472,12 +472,12 @@ the conditional quantile level.<br/> `horizon_weight`: Tensor of size h,
 weight for each timestamp of the forecasting window. <br/>
 
 **References:**<br/> [Roger Koenker and Gilbert Bassett, Jr., “Regression
-Quantiles”.](https://www.jstor.org/stable/1913643)
+Quantiles”.](https://www.jstor.org/stable/1913643)\*
 
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/Nixtla/neuralforecast/blob/main/neuralforecast/losses/pytorch.py#L445"
+href="https://github.com/Nixtla/neuralforecast/blob/main/neuralforecast/losses/pytorch.py#L457"
 target="_blank" style={{ float: "right", fontSize: "smaller" }}>source</a>
 
 ### QuantileLoss.\_\_call\_\_
@@ -487,13 +487,13 @@ target="_blank" style={{ float: "right", fontSize: "smaller" }}>source</a>
 >                         mask:Optional[torch.Tensor]=None)
 > ```
 
-**Parameters:**<br/> `y`: tensor, Actual values.<br/> `y_hat`: tensor,
+\***Parameters:**<br/> `y`: tensor, Actual values.<br/> `y_hat`: tensor,
 Predicted values.<br/> `mask`: tensor, Specifies datapoints to consider
 in loss.<br/>
 
 **Returns:**<br/>
 [`quantile_loss`](https://Nixtla.github.io/neuralforecast/losses.numpy.html#quantile_loss):
-tensor (single value).
+tensor (single value).\*
 
 ![](/neural-forecast/imgs_losses/q_loss.png)
 
@@ -502,7 +502,7 @@ tensor (single value).
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/Nixtla/neuralforecast/blob/main/neuralforecast/losses/pytorch.py#L494"
+href="https://github.com/Nixtla/neuralforecast/blob/main/neuralforecast/losses/pytorch.py#L506"
 target="_blank" style={{ float: "right", fontSize: "smaller" }}>source</a>
 
 ### MQLoss.\_\_init\_\_
@@ -511,7 +511,7 @@ target="_blank" style={{ float: "right", fontSize: "smaller" }}>source</a>
 >  MQLoss.__init__ (level=[80, 90], quantiles=None, horizon_weight=None)
 > ```
 
-Multi-Quantile loss
+\*Multi-Quantile loss
 
 Calculates the Multi-Quantile loss (MQL) between `y` and `y_hat`. MQL
 calculates the average multi-quantile Loss for a given set of quantiles,
@@ -538,12 +538,12 @@ forecasting window. <br/>
 **References:**<br/> [Roger Koenker and Gilbert Bassett, Jr., “Regression
 Quantiles”.](https://www.jstor.org/stable/1913643)<br/> [James E.
 Matheson and Robert L. Winkler, “Scoring Rules for Continuous
-Probability Distributions”.](https://www.jstor.org/stable/2629907)
+Probability Distributions”.](https://www.jstor.org/stable/2629907)\*
 
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/Nixtla/neuralforecast/blob/main/neuralforecast/losses/pytorch.py#L568"
+href="https://github.com/Nixtla/neuralforecast/blob/main/neuralforecast/losses/pytorch.py#L580"
 target="_blank" style={{ float: "right", fontSize: "smaller" }}>source</a>
 
 ### MQLoss.\_\_call\_\_
@@ -553,22 +553,96 @@ target="_blank" style={{ float: "right", fontSize: "smaller" }}>source</a>
 >                   mask:Optional[torch.Tensor]=None)
 > ```
 
-**Parameters:**<br/> `y`: tensor, Actual values.<br/> `y_hat`: tensor,
+\***Parameters:**<br/> `y`: tensor, Actual values.<br/> `y_hat`: tensor,
 Predicted values.<br/> `mask`: tensor, Specifies date stamps per serie to
 consider in loss.<br/>
 
 **Returns:**<br/>
 [`mqloss`](https://Nixtla.github.io/neuralforecast/losses.numpy.html#mqloss):
-tensor (single value).
+tensor (single value).\*
 
 ![](/neural-forecast/imgs_losses/mq_loss.png)
+
+## Implicit Quantile Loss (IQLoss)
+
+------------------------------------------------------------------------
+
+<a
+href="https://github.com/Nixtla/neuralforecast/blob/main/neuralforecast/losses/pytorch.py#L619"
+target="_blank" style={{ float: "right", fontSize: "smaller" }}>source</a>
+
+### QuantileLayer
+
+> ``` text
+>  QuantileLayer (num_output:int, cos_embedding_dim:int=128)
+> ```
+
+\*Implicit Quantile Layer from the paper
+`IQN for Distributional Reinforcement Learning`
+(https://arxiv.org/abs/1806.06923) by Dabney et al. 2018.
+
+Code from GluonTS:
+https://github.com/awslabs/gluonts/blob/61133ef6e2d88177b32ace4afc6843ab9a7bc8cd/src/gluonts/torch/distributions/implicit_quantile_network.py\*
+
+------------------------------------------------------------------------
+
+<a
+href="https://github.com/Nixtla/neuralforecast/blob/main/neuralforecast/losses/pytorch.py#L645"
+target="_blank" style={{ float: "right", fontSize: "smaller" }}>source</a>
+
+### IQLoss.\_\_init\_\_
+
+> ``` text
+>  IQLoss.__init__ (cos_embedding_dim=64, concentration0=1.0,
+>                   concentration1=1.0, horizon_weight=None)
+> ```
+
+\*Implicit Quantile Loss
+
+Computes the quantile loss between `y` and `y_hat`, with the quantile
+`q` provided as an input to the network. IQL measures the deviation of a
+quantile forecast. By weighting the absolute deviation in a non
+symmetric way, the loss pays more attention to under or over estimation.
+
+$$ \mathrm{QL}(\mathbf{y}_{\tau}, \mathbf{\hat{y}}^{(q)}_{\tau}) = \frac{1}{H} \sum^{t+H}_{\tau=t+1} \Big( (1-q)\,( \hat{y}^{(q)}_{\tau} - y_{\tau} )_{+} + q\,( y_{\tau} - \hat{y}^{(q)}_{\tau} )_{+} \Big) $$
+
+**Parameters:**<br/> `quantile_sampling`: str, default=‘uniform’,
+sampling distribution used to sample the quantiles during training.
+Choose from \[‘uniform’, ‘beta’\]. <br/> `horizon_weight`: Tensor of size
+h, weight for each timestamp of the forecasting window. <br/>
+
+**References:**<br/> [Gouttes, Adèle, Kashif Rasul, Mateusz Koren,
+Johannes Stephan, and Tofigh Naghibi, “Probabilistic Time Series
+Forecasting with Implicit Quantile
+Networks”.](http://arxiv.org/abs/2107.03743)\*
+
+------------------------------------------------------------------------
+
+<a
+href="https://github.com/Nixtla/neuralforecast/blob/main/neuralforecast/losses/pytorch.py#L457"
+target="_blank" style={{ float: "right", fontSize: "smaller" }}>source</a>
+
+### IQLoss.\_\_call\_\_
+
+> ``` text
+>  IQLoss.__call__ (y:torch.Tensor, y_hat:torch.Tensor,
+>                   mask:Optional[torch.Tensor]=None)
+> ```
+
+\***Parameters:**<br/> `y`: tensor, Actual values.<br/> `y_hat`: tensor,
+Predicted values.<br/> `mask`: tensor, Specifies datapoints to consider
+in loss.<br/>
+
+**Returns:**<br/>
+[`quantile_loss`](https://Nixtla.github.io/neuralforecast/losses.numpy.html#quantile_loss):
+tensor (single value).\*
 
 ## DistributionLoss
 
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/Nixtla/neuralforecast/blob/main/neuralforecast/losses/pytorch.py#L913"
+href="https://github.com/Nixtla/neuralforecast/blob/main/neuralforecast/losses/pytorch.py#L1838"
 target="_blank" style={{ float: "right", fontSize: "smaller" }}>source</a>
 
 ### DistributionLoss.\_\_init\_\_
@@ -579,7 +653,7 @@ target="_blank" style={{ float: "right", fontSize: "smaller" }}>source</a>
 >                             **distribution_kwargs)
 > ```
 
-DistributionLoss
+\*DistributionLoss
 
 This PyTorch module wraps the `torch.distribution` classes allowing it
 to interact with NeuralForecast models modularly. It shares the negative
@@ -592,7 +666,8 @@ and a multiplier efficiently learnable within the network’s
 non-linearities operating ranges.
 
 Available distributions:<br/> - Poisson<br/> - Normal<br/> - StudentT<br/> -
-NegativeBinomial<br/> - Tweedie<br/> - Bernoulli (Temporal Classifiers)
+NegativeBinomial<br/> - Tweedie<br/> - Bernoulli (Temporal
+Classifiers)<br/> - ISQF (Incremental Spline Quantile Function)
 
 **Parameters:**<br/> `distribution`: str, identifier of a
 torch.distributions.Distribution class.<br/> `level`: float list
@@ -607,12 +682,16 @@ StudentT.](https://pytorch.org/docs/stable/distributions.html#studentt)<br/> -
 [David Salinas, Valentin Flunkert, Jan Gasthaus, Tim Januschowski
 (2020). “DeepAR: Probabilistic forecasting with autoregressive recurrent
 networks”. International Journal of
-Forecasting.](https://www.sciencedirect.com/science/article/pii/s0169207019301888)<br/>
+Forecasting.](https://www.sciencedirect.com/science/article/pii/s0169207019301888)<br/> -
+[Park, Youngsuk, Danielle Maddix, François-Xavier Aubet, Kelvin Kan, Jan
+Gasthaus, and Yuyang Wang (2022). “Learning Quantile Functions without
+Quantile Crossing for Distribution-free Time Series
+Forecasting”.](https://proceedings.mlr.press/v151/park22a.html)\*
 
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/Nixtla/neuralforecast/blob/main/neuralforecast/losses/pytorch.py#L1040"
+href="https://github.com/Nixtla/neuralforecast/blob/main/neuralforecast/losses/pytorch.py#L1980"
 target="_blank" style={{ float: "right", fontSize: "smaller" }}>source</a>
 
 ### DistributionLoss.sample
@@ -622,24 +701,20 @@ target="_blank" style={{ float: "right", fontSize: "smaller" }}>source</a>
 >                           num_samples:Optional[int]=None)
 > ```
 
-Construct the empirical quantiles from the estimated Distribution,
+\*Construct the empirical quantiles from the estimated Distribution,
 sampling from it `num_samples` independently.
 
 **Parameters**<br/> `distr_args`: Constructor arguments for the
-underlying Distribution type.<br/> `loc`: Optional tensor, of the same
-shape as the batch_shape + event_shape of the resulting
-distribution.<br/> `scale`: Optional tensor, of the same shape as the
-batch_shape+event_shape of the resulting distribution.<br/>
-`num_samples`: int=500, overwrite number of samples for the empirical
-quantiles.<br/>
+underlying Distribution type.<br/> `num_samples`: int=500, overwrite
+number of samples for the empirical quantiles.<br/>
 
 **Returns**<br/> `samples`: tensor, shape \[B,H,`num_samples`\].<br/>
-`quantiles`: tensor, empirical quantiles defined by `levels`.<br/>
+`quantiles`: tensor, empirical quantiles defined by `levels`.<br/>\*
 
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/Nixtla/neuralforecast/blob/main/neuralforecast/losses/pytorch.py#L1083"
+href="https://github.com/Nixtla/neuralforecast/blob/main/neuralforecast/losses/pytorch.py#L2019"
 target="_blank" style={{ float: "right", fontSize: "smaller" }}>source</a>
 
 ### DistributionLoss.\_\_call\_\_
@@ -649,8 +724,8 @@ target="_blank" style={{ float: "right", fontSize: "smaller" }}>source</a>
 >                             mask:Optional[torch.Tensor]=None)
 > ```
 
-Computes the negative log-likelihood objective function. To estimate the
-following predictive distribution:
+\*Computes the negative log-likelihood objective function. To estimate
+the following predictive distribution:
 
 $$\mathrm{P}(\mathbf{y}_{\tau}\,|\,\theta) \quad \mathrm{and} \quad -\log(\mathrm{P}(\mathbf{y}_{\tau}\,|\,\theta))$$
 
@@ -666,14 +741,14 @@ shape as the batch_shape+event_shape of the resulting distribution.<br/>
 `mask`: tensor, Specifies date stamps per serie to consider in loss.<br/>
 
 **Returns**<br/> `loss`: scalar, weighted loss function against which
-backpropagation will be performed.<br/>
+backpropagation will be performed.<br/>\*
 
 ## Poisson Mixture Mesh (PMM)
 
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/Nixtla/neuralforecast/blob/main/neuralforecast/losses/pytorch.py#L1117"
+href="https://github.com/Nixtla/neuralforecast/blob/main/neuralforecast/losses/pytorch.py#L2053"
 target="_blank" style={{ float: "right", fontSize: "smaller" }}>source</a>
 
 ### PMM.\_\_init\_\_
@@ -684,7 +759,7 @@ target="_blank" style={{ float: "right", fontSize: "smaller" }}>source</a>
 >                batch_correlation=False, horizon_correlation=False)
 > ```
 
-Poisson Mixture Mesh
+\*Poisson Mixture Mesh
 
 This Poisson Mixture statistical model assumes independence across
 groups of data $\mathcal{G}=\{[g_{i}]\}$, and estimates relationships
@@ -710,12 +785,12 @@ correlations.<br/>
 Reddy, Mengfei Cao, Lee Dicker. Probabilistic Hierarchical Forecasting
 with Deep Poisson Mixtures. Submitted to the International Journal
 Forecasting, Working paper available at
-arxiv.](https://arxiv.org/pdf/2110.13179.pdf)
+arxiv.](https://arxiv.org/pdf/2110.13179.pdf)\*
 
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/Nixtla/neuralforecast/blob/main/neuralforecast/losses/pytorch.py#L1201"
+href="https://github.com/Nixtla/neuralforecast/blob/main/neuralforecast/losses/pytorch.py#L2137"
 target="_blank" style={{ float: "right", fontSize: "smaller" }}>source</a>
 
 ### PMM.sample
@@ -724,7 +799,7 @@ target="_blank" style={{ float: "right", fontSize: "smaller" }}>source</a>
 >  PMM.sample (distr_args, num_samples=None)
 > ```
 
-Construct the empirical quantiles from the estimated Distribution,
+\*Construct the empirical quantiles from the estimated Distribution,
 sampling from it `num_samples` independently.
 
 **Parameters**<br/> `distr_args`: Constructor arguments for the
@@ -736,12 +811,12 @@ batch_shape+event_shape of the resulting distribution.<br/>
 quantiles.<br/>
 
 **Returns**<br/> `samples`: tensor, shape \[B,H,`num_samples`\].<br/>
-`quantiles`: tensor, empirical quantiles defined by `levels`.<br/>
+`quantiles`: tensor, empirical quantiles defined by `levels`.<br/>\*
 
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/Nixtla/neuralforecast/blob/main/neuralforecast/losses/pytorch.py#L1306"
+href="https://github.com/Nixtla/neuralforecast/blob/main/neuralforecast/losses/pytorch.py#L2243"
 target="_blank" style={{ float: "right", fontSize: "smaller" }}>source</a>
 
 ### PMM.\_\_call\_\_
@@ -751,7 +826,7 @@ target="_blank" style={{ float: "right", fontSize: "smaller" }}>source</a>
 >                mask:Optional[torch.Tensor]=None)
 > ```
 
-Call self as a function.
+*Call self as a function.*
 
 ![](/neural-forecast/imgs_losses/pmm.png)
 
@@ -760,7 +835,7 @@ Call self as a function.
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/Nixtla/neuralforecast/blob/main/neuralforecast/losses/pytorch.py#L1316"
+href="https://github.com/Nixtla/neuralforecast/blob/main/neuralforecast/losses/pytorch.py#L2253"
 target="_blank" style={{ float: "right", fontSize: "smaller" }}>source</a>
 
 ### GMM.\_\_init\_\_
@@ -771,7 +846,7 @@ target="_blank" style={{ float: "right", fontSize: "smaller" }}>source</a>
 >                batch_correlation=False, horizon_correlation=False)
 > ```
 
-Gaussian Mixture Mesh
+\*Gaussian Mixture Mesh
 
 This Gaussian Mixture statistical model assumes independence across
 groups of data $\mathcal{G}=\{[g_{i}]\}$, and estimates relationships
@@ -798,12 +873,12 @@ correlations.<br/><br/>
 Reddy, Mengfei Cao, Lee Dicker. Probabilistic Hierarchical Forecasting
 with Deep Poisson Mixtures. Submitted to the International Journal
 Forecasting, Working paper available at
-arxiv.](https://arxiv.org/pdf/2110.13179.pdf)
+arxiv.](https://arxiv.org/pdf/2110.13179.pdf)\*
 
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/Nixtla/neuralforecast/blob/main/neuralforecast/losses/pytorch.py#L1406"
+href="https://github.com/Nixtla/neuralforecast/blob/main/neuralforecast/losses/pytorch.py#L2343"
 target="_blank" style={{ float: "right", fontSize: "smaller" }}>source</a>
 
 ### GMM.sample
@@ -812,7 +887,7 @@ target="_blank" style={{ float: "right", fontSize: "smaller" }}>source</a>
 >  GMM.sample (distr_args, num_samples=None)
 > ```
 
-Construct the empirical quantiles from the estimated Distribution,
+\*Construct the empirical quantiles from the estimated Distribution,
 sampling from it `num_samples` independently.
 
 **Parameters**<br/> `distr_args`: Constructor arguments for the
@@ -824,12 +899,12 @@ batch_shape+event_shape of the resulting distribution.<br/>
 quantiles.<br/>
 
 **Returns**<br/> `samples`: tensor, shape \[B,H,`num_samples`\].<br/>
-`quantiles`: tensor, empirical quantiles defined by `levels`.<br/>
+`quantiles`: tensor, empirical quantiles defined by `levels`.<br/>\*
 
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/Nixtla/neuralforecast/blob/main/neuralforecast/losses/pytorch.py#L1514"
+href="https://github.com/Nixtla/neuralforecast/blob/main/neuralforecast/losses/pytorch.py#L2450"
 target="_blank" style={{ float: "right", fontSize: "smaller" }}>source</a>
 
 ### GMM.\_\_call\_\_
@@ -840,7 +915,7 @@ target="_blank" style={{ float: "right", fontSize: "smaller" }}>source</a>
 >                mask:Optional[torch.Tensor]=None)
 > ```
 
-Call self as a function.
+*Call self as a function.*
 
 ![](/neural-forecast/imgs_losses/gmm.png)
 
@@ -849,7 +924,7 @@ Call self as a function.
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/Nixtla/neuralforecast/blob/main/neuralforecast/losses/pytorch.py#L1524"
+href="https://github.com/Nixtla/neuralforecast/blob/main/neuralforecast/losses/pytorch.py#L2460"
 target="_blank" style={{ float: "right", fontSize: "smaller" }}>source</a>
 
 ### NBMM.\_\_init\_\_
@@ -859,7 +934,7 @@ target="_blank" style={{ float: "right", fontSize: "smaller" }}>source</a>
 >                 num_samples=1000, return_params=False)
 > ```
 
-Negative Binomial Mixture Mesh
+\*Negative Binomial Mixture Mesh
 
 This N. Binomial Mixture statistical model assumes independence across
 groups of data $\mathcal{G}=\{[g_{i}]\}$, and estimates relationships
@@ -883,12 +958,12 @@ or not return the Distribution parameters.<br/><br/>
 Reddy, Mengfei Cao, Lee Dicker. Probabilistic Hierarchical Forecasting
 with Deep Poisson Mixtures. Submitted to the International Journal
 Forecasting, Working paper available at
-arxiv.](https://arxiv.org/pdf/2110.13179.pdf)
+arxiv.](https://arxiv.org/pdf/2110.13179.pdf)\*
 
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/Nixtla/neuralforecast/blob/main/neuralforecast/losses/pytorch.py#L1617"
+href="https://github.com/Nixtla/neuralforecast/blob/main/neuralforecast/losses/pytorch.py#L2553"
 target="_blank" style={{ float: "right", fontSize: "smaller" }}>source</a>
 
 ### NBMM.sample
@@ -897,7 +972,7 @@ target="_blank" style={{ float: "right", fontSize: "smaller" }}>source</a>
 >  NBMM.sample (distr_args, num_samples=None)
 > ```
 
-Construct the empirical quantiles from the estimated Distribution,
+\*Construct the empirical quantiles from the estimated Distribution,
 sampling from it `num_samples` independently.
 
 **Parameters**<br/> `distr_args`: Constructor arguments for the
@@ -909,12 +984,12 @@ batch_shape+event_shape of the resulting distribution.<br/>
 quantiles.<br/>
 
 **Returns**<br/> `samples`: tensor, shape \[B,H,`num_samples`\].<br/>
-`quantiles`: tensor, empirical quantiles defined by `levels`.<br/>
+`quantiles`: tensor, empirical quantiles defined by `levels`.<br/>\*
 
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/Nixtla/neuralforecast/blob/main/neuralforecast/losses/pytorch.py#L1729"
+href="https://github.com/Nixtla/neuralforecast/blob/main/neuralforecast/losses/pytorch.py#L2664"
 target="_blank" style={{ float: "right", fontSize: "smaller" }}>source</a>
 
 ### NBMM.\_\_call\_\_
@@ -925,7 +1000,7 @@ target="_blank" style={{ float: "right", fontSize: "smaller" }}>source</a>
 >                 mask:Optional[torch.Tensor]=None)
 > ```
 
-Call self as a function.
+*Call self as a function.*
 
 # 5. Robustified Errors
 
@@ -939,7 +1014,7 @@ offering more stable results.
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/Nixtla/neuralforecast/blob/main/neuralforecast/losses/pytorch.py#L1739"
+href="https://github.com/Nixtla/neuralforecast/blob/main/neuralforecast/losses/pytorch.py#L2674"
 target="_blank" style={{ float: "right", fontSize: "smaller" }}>source</a>
 
 ### HuberLoss.\_\_init\_\_
@@ -948,7 +1023,7 @@ target="_blank" style={{ float: "right", fontSize: "smaller" }}>source</a>
 >  HuberLoss.__init__ (delta:float=1.0, horizon_weight=None)
 > ```
 
-Huber Loss
+\*Huber Loss
 
 The Huber loss, employed in robust regression, is a loss function that
 exhibits reduced sensitivity to outliers in data when compared to the
@@ -976,12 +1051,12 @@ of size h, weight for each timestamp of the forecasting window. <br/>
 
 **References:**<br/> [Huber Peter, J (1964). “Robust Estimation of a
 Location Parameter”. Annals of
-Statistics](https://projecteuclid.org/journals/annals-of-mathematical-statistics/volume-35/issue-1/Robust-Estimation-of-a-Location-Parameter/10.1214/aoms/1177703732.full)
+Statistics](https://projecteuclid.org/journals/annals-of-mathematical-statistics/volume-35/issue-1/Robust-Estimation-of-a-Location-Parameter/10.1214/aoms/1177703732.full)\*
 
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/Nixtla/neuralforecast/blob/main/neuralforecast/losses/pytorch.py#L1771"
+href="https://github.com/Nixtla/neuralforecast/blob/main/neuralforecast/losses/pytorch.py#L2706"
 target="_blank" style={{ float: "right", fontSize: "smaller" }}>source</a>
 
 ### HuberLoss.\_\_call\_\_
@@ -991,11 +1066,11 @@ target="_blank" style={{ float: "right", fontSize: "smaller" }}>source</a>
 >                      mask:Optional[torch.Tensor]=None)
 > ```
 
-**Parameters:**<br/> `y`: tensor, Actual values.<br/> `y_hat`: tensor,
+\***Parameters:**<br/> `y`: tensor, Actual values.<br/> `y_hat`: tensor,
 Predicted values.<br/> `mask`: tensor, Specifies date stamps per serie to
 consider in loss.<br/>
 
-**Returns:**<br/> `huber_loss`: tensor (single value).
+**Returns:**<br/> `huber_loss`: tensor (single value).\*
 
 ![](/neural-forecast/imgs_losses/huber_loss.png)
 
@@ -1004,7 +1079,7 @@ consider in loss.<br/>
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/Nixtla/neuralforecast/blob/main/neuralforecast/losses/pytorch.py#L1791"
+href="https://github.com/Nixtla/neuralforecast/blob/main/neuralforecast/losses/pytorch.py#L2726"
 target="_blank" style={{ float: "right", fontSize: "smaller" }}>source</a>
 
 ### TukeyLoss.\_\_init\_\_
@@ -1013,7 +1088,7 @@ target="_blank" style={{ float: "right", fontSize: "smaller" }}>source</a>
 >  TukeyLoss.__init__ (c:float=4.685, normalize:bool=True)
 > ```
 
-Tukey Loss
+\*Tukey Loss
 
 The Tukey loss function, also known as Tukey’s biweight function, is a
 robust statistical loss function used in robust statistics. Tukey’s loss
@@ -1044,12 +1119,12 @@ computation.<br/>
 
 **References:**<br/> [Beaton, A. E., and Tukey, J. W. (1974). “The
 Fitting of Power Series, Meaning Polynomials, Illustrated on
-Band-Spectroscopic Data.”](https://www.jstor.org/stable/1267936)
+Band-Spectroscopic Data.”](https://www.jstor.org/stable/1267936)\*
 
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/Nixtla/neuralforecast/blob/main/neuralforecast/losses/pytorch.py#L1842"
+href="https://github.com/Nixtla/neuralforecast/blob/main/neuralforecast/losses/pytorch.py#L2777"
 target="_blank" style={{ float: "right", fontSize: "smaller" }}>source</a>
 
 ### TukeyLoss.\_\_call\_\_
@@ -1059,11 +1134,11 @@ target="_blank" style={{ float: "right", fontSize: "smaller" }}>source</a>
 >                      mask:Optional[torch.Tensor]=None)
 > ```
 
-**Parameters:**<br/> `y`: tensor, Actual values.<br/> `y_hat`: tensor,
+\***Parameters:**<br/> `y`: tensor, Actual values.<br/> `y_hat`: tensor,
 Predicted values.<br/> `mask`: tensor, Specifies date stamps per serie to
 consider in loss.<br/>
 
-**Returns:**<br/> `tukey_loss`: tensor (single value).
+**Returns:**<br/> `tukey_loss`: tensor (single value).\*
 
 ![](/neural-forecast/imgs_losses/tukey_loss.png)
 
@@ -1072,7 +1147,7 @@ consider in loss.<br/>
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/Nixtla/neuralforecast/blob/main/neuralforecast/losses/pytorch.py#L1879"
+href="https://github.com/Nixtla/neuralforecast/blob/main/neuralforecast/losses/pytorch.py#L2814"
 target="_blank" style={{ float: "right", fontSize: "smaller" }}>source</a>
 
 ### HuberQLoss.\_\_init\_\_
@@ -1081,7 +1156,7 @@ target="_blank" style={{ float: "right", fontSize: "smaller" }}>source</a>
 >  HuberQLoss.__init__ (q, delta:float=1.0, horizon_weight=None)
 > ```
 
-Huberized Quantile Loss
+\*Huberized Quantile Loss
 
 The Huberized quantile loss is a modified version of the quantile loss
 function that combines the advantages of the quantile loss and the Huber
@@ -1111,12 +1186,12 @@ forecasting window. <br/>
 Location Parameter”. Annals of
 Statistics](https://projecteuclid.org/journals/annals-of-mathematical-statistics/volume-35/issue-1/Robust-Estimation-of-a-Location-Parameter/10.1214/aoms/1177703732.full)<br/>
 [Roger Koenker and Gilbert Bassett, Jr., “Regression
-Quantiles”.](https://www.jstor.org/stable/1913643)
+Quantiles”.](https://www.jstor.org/stable/1913643)\*
 
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/Nixtla/neuralforecast/blob/main/neuralforecast/losses/pytorch.py#L1913"
+href="https://github.com/Nixtla/neuralforecast/blob/main/neuralforecast/losses/pytorch.py#L2848"
 target="_blank" style={{ float: "right", fontSize: "smaller" }}>source</a>
 
 ### HuberQLoss.\_\_call\_\_
@@ -1126,11 +1201,11 @@ target="_blank" style={{ float: "right", fontSize: "smaller" }}>source</a>
 >                       mask:Optional[torch.Tensor]=None)
 > ```
 
-**Parameters:**<br/> `y`: tensor, Actual values.<br/> `y_hat`: tensor,
+\***Parameters:**<br/> `y`: tensor, Actual values.<br/> `y_hat`: tensor,
 Predicted values.<br/> `mask`: tensor, Specifies datapoints to consider
 in loss.<br/>
 
-**Returns:**<br/> `huber_qloss`: tensor (single value).
+**Returns:**<br/> `huber_qloss`: tensor (single value).\*
 
 ![](/neural-forecast/imgs_losses/huber_qloss.png)
 
@@ -1139,7 +1214,7 @@ in loss.<br/>
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/Nixtla/neuralforecast/blob/main/neuralforecast/losses/pytorch.py#L1942"
+href="https://github.com/Nixtla/neuralforecast/blob/main/neuralforecast/losses/pytorch.py#L2877"
 target="_blank" style={{ float: "right", fontSize: "smaller" }}>source</a>
 
 ### HuberMQLoss.\_\_init\_\_
@@ -1149,7 +1224,7 @@ target="_blank" style={{ float: "right", fontSize: "smaller" }}>source</a>
 >                        horizon_weight=None)
 > ```
 
-Huberized Multi-Quantile loss
+\*Huberized Multi-Quantile loss
 
 The Huberized Multi-Quantile loss (HuberMQL) is a modified version of
 the multi-quantile loss function that combines the advantages of the
@@ -1177,12 +1252,12 @@ forecasting window. <br/>
 Location Parameter”. Annals of
 Statistics](https://projecteuclid.org/journals/annals-of-mathematical-statistics/volume-35/issue-1/Robust-Estimation-of-a-Location-Parameter/10.1214/aoms/1177703732.full)<br/>
 [Roger Koenker and Gilbert Bassett, Jr., “Regression
-Quantiles”.](https://www.jstor.org/stable/1913643)
+Quantiles”.](https://www.jstor.org/stable/1913643)\*
 
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/Nixtla/neuralforecast/blob/main/neuralforecast/losses/pytorch.py#L2013"
+href="https://github.com/Nixtla/neuralforecast/blob/main/neuralforecast/losses/pytorch.py#L2948"
 target="_blank" style={{ float: "right", fontSize: "smaller" }}>source</a>
 
 ### HuberMQLoss.\_\_call\_\_
@@ -1192,11 +1267,11 @@ target="_blank" style={{ float: "right", fontSize: "smaller" }}>source</a>
 >                        mask:Optional[torch.Tensor]=None)
 > ```
 
-**Parameters:**<br/> `y`: tensor, Actual values.<br/> `y_hat`: tensor,
+\***Parameters:**<br/> `y`: tensor, Actual values.<br/> `y_hat`: tensor,
 Predicted values.<br/> `mask`: tensor, Specifies date stamps per serie to
 consider in loss.<br/>
 
-**Returns:**<br/> `hmqloss`: tensor (single value).
+**Returns:**<br/> `hmqloss`: tensor (single value).\*
 
 ![](/neural-forecast/imgs_losses/hmq_loss.png)
 
@@ -1207,7 +1282,7 @@ consider in loss.<br/>
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/Nixtla/neuralforecast/blob/main/neuralforecast/losses/pytorch.py#L2056"
+href="https://github.com/Nixtla/neuralforecast/blob/main/neuralforecast/losses/pytorch.py#L2991"
 target="_blank" style={{ float: "right", fontSize: "smaller" }}>source</a>
 
 ### Accuracy.\_\_init\_\_
@@ -1216,18 +1291,18 @@ target="_blank" style={{ float: "right", fontSize: "smaller" }}>source</a>
 >  Accuracy.__init__ ()
 > ```
 
-Accuracy
+\*Accuracy
 
 Computes the accuracy between categorical `y` and `y_hat`. This
 evaluation metric is only meant for evalution, as it is not
 differentiable.
 
-$$ \mathrm{Accuracy}(\mathbf{y}_{\tau}, \mathbf{\hat{y}}_{\tau}) = \frac{1}{H} \sum^{t+H}_{\tau=t+1} \mathrm{1}\{\mathbf{y}_{\tau}==\mathbf{\hat{y}}_{\tau}\} $$
+$$ \mathrm{Accuracy}(\mathbf{y}_{\tau}, \mathbf{\hat{y}}_{\tau}) = \frac{1}{H} \sum^{t+H}_{\tau=t+1} \mathrm{1}\{\mathbf{y}_{\tau}==\mathbf{\hat{y}}_{\tau}\} $$\*
 
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/Nixtla/neuralforecast/blob/main/neuralforecast/losses/pytorch.py#L2080"
+href="https://github.com/Nixtla/neuralforecast/blob/main/neuralforecast/losses/pytorch.py#L3015"
 target="_blank" style={{ float: "right", fontSize: "smaller" }}>source</a>
 
 ### Accuracy.\_\_call\_\_
@@ -1237,18 +1312,18 @@ target="_blank" style={{ float: "right", fontSize: "smaller" }}>source</a>
 >                     mask:Optional[torch.Tensor]=None)
 > ```
 
-**Parameters:**<br/> `y`: tensor, Actual values.<br/> `y_hat`: tensor,
+\***Parameters:**<br/> `y`: tensor, Actual values.<br/> `y_hat`: tensor,
 Predicted values.<br/> `mask`: tensor, Specifies date stamps per serie to
 consider in loss.<br/>
 
-**Returns:**<br/> `accuracy`: tensor (single value).
+**Returns:**<br/> `accuracy`: tensor (single value).\*
 
 ## Scaled Continuous Ranked Probability Score (sCRPS)
 
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/Nixtla/neuralforecast/blob/main/neuralforecast/losses/pytorch.py#L2103"
+href="https://github.com/Nixtla/neuralforecast/blob/main/neuralforecast/losses/pytorch.py#L3038"
 target="_blank" style={{ float: "right", fontSize: "smaller" }}>source</a>
 
 ### sCRPS.\_\_init\_\_
@@ -1257,7 +1332,7 @@ target="_blank" style={{ float: "right", fontSize: "smaller" }}>source</a>
 >  sCRPS.__init__ (level=[80, 90], quantiles=None)
 > ```
 
-Scaled Continues Ranked Probability Score
+\*Scaled Continues Ranked Probability Score
 
 Calculates a scaled variation of the CRPS, as proposed by Rangapuram
 (2021), to measure the accuracy of predicted quantiles `y_hat` compared
@@ -1291,12 +1366,12 @@ Forecasting.](https://www.sciencedirect.com/science/article/pii/s016920702100172
 Mercado, Jan Gasthaus, Tim Januschowski. (2021). “End-to-End Learning of
 Coherent Probabilistic Forecasts for Hierarchical Time Series”.
 Proceedings of the 38th International Conference on Machine Learning
-(ICML).](https://proceedings.mlr.press/v139/rangapuram21a.html)
+(ICML).](https://proceedings.mlr.press/v139/rangapuram21a.html)\*
 
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/Nixtla/neuralforecast/blob/main/neuralforecast/losses/pytorch.py#L2139"
+href="https://github.com/Nixtla/neuralforecast/blob/main/neuralforecast/losses/pytorch.py#L3074"
 target="_blank" style={{ float: "right", fontSize: "smaller" }}>source</a>
 
 ### sCRPS.\_\_call\_\_
@@ -1306,9 +1381,9 @@ target="_blank" style={{ float: "right", fontSize: "smaller" }}>source</a>
 >                  mask:Optional[torch.Tensor]=None)
 > ```
 
-**Parameters:**<br/> `y`: tensor, Actual values.<br/> `y_hat`: tensor,
+\***Parameters:**<br/> `y`: tensor, Actual values.<br/> `y_hat`: tensor,
 Predicted values.<br/> `mask`: tensor, Specifies date stamps per series
 to consider in loss.<br/>
 
-**Returns:**<br/> `scrps`: tensor (single value).
+**Returns:**<br/> `scrps`: tensor (single value).\*
 

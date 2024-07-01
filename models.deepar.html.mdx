@@ -17,6 +17,16 @@ hidden states $\mathbf{h}_{t}$ into predictive distribution parameters
 $\theta_{t}$, and then generating samples $\mathbf{\hat{y}}_{[t+1:t+H]}$
 through Monte Carlo sampling trajectories.
 
+$$
+
+\begin{align}
+\mathbf{h}_{t} &= \textrm{RNN}([\mathbf{y}_{t},\mathbf{x}^{(f)}_{t+1},\mathbf{x}^{(s)}], \mathbf{h}_{t-1})\\
+\mathbf{\theta}_{t}&=\textrm{Linear}(\mathbf{h}_{t}) \\
+\hat{y}_{t+1}&=\textrm{sample}(\;\mathrm{P}(y_{t+1}\;|\;\mathbf{\theta}_{t})\;)
+\end{align}
+
+$$
+
 **References**<br/> - [David Salinas, Valentin Flunkert, Jan Gasthaus,
 Tim Januschowski (2020). “DeepAR: Probabilistic forecasting with
 autoregressive recurrent networks”. International Journal of
@@ -62,17 +72,17 @@ target="_blank" style={{ float: "right", fontSize: "smaller" }}>source</a>
 >  Decoder (in_features, out_features, hidden_size, hidden_layers)
 > ```
 
-Multi-Layer Perceptron Decoder
+\*Multi-Layer Perceptron Decoder
 
 **Parameters:**<br/> `in_features`: int, dimension of input.<br/>
 `out_features`: int, dimension of output.<br/> `hidden_size`: int,
 dimension of hidden layers.<br/> `num_layers`: int, number of hidden
-layers.<br/>
+layers.<br/>\*
 
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/Nixtla/neuralforecast/blob/main/neuralforecast/models/deepar.py#L62"
+href="https://github.com/Nixtla/neuralforecast/blob/main/neuralforecast/models/deepar.py#L56"
 target="_blank" style={{ float: "right", fontSize: "smaller" }}>source</a>
 
 ### DeepAR
@@ -92,28 +102,11 @@ target="_blank" style={{ float: "right", fontSize: "smaller" }}>source</a>
 >          start_padding_enabled=False, step_size:int=1,
 >          scaler_type:str='identity', random_seed:int=1,
 >          num_workers_loader=0, drop_last_loader=False, optimizer=None,
->          optimizer_kwargs=None, **trainer_kwargs)
+>          optimizer_kwargs=None, lr_scheduler=None,
+>          lr_scheduler_kwargs=None, **trainer_kwargs)
 > ```
 
-DeepAR
-
-The DeepAR model produces probabilistic forecasts based on an
-autoregressive recurrent neural network optimized on panel data using
-cross-learning. DeepAR obtains its forecast distribution uses a Markov
-Chain Monte Carlo sampler with the following conditional probability:
-$$\mathbb{P}(\mathbf{y}_{[t+1:t+H]}|\;\mathbf{y}_{[:t]},\; \mathbf{x}^{(f)}_{[:t+H]},\; \mathbf{x}^{(s)})$$
-
-where $\mathbf{x}^{(s)}$ are static exogenous inputs,
-$\mathbf{x}^{(f)}_{[:t+H]}$ are future exogenous available at the time
-of the prediction. The predictions are obtained by transforming the
-hidden states $\mathbf{h}_{t}$ into predictive distribution parameters
-\$ heta\_{t}\$, and then generating samples
-$\mathbf{\hat{y}}_{[t+1:t+H]}$ through Monte Carlo sampling
-trajectories.
-
-egin{align} *{t} &= extrm{RNN}(\[*{t},^{(f)}*{t+1},^{(s)}\], *{t-1})  
-*{t}&= extrm{Linear}(*{t})  
-*{t+1}&= extrm{sample}(;(y*{t+1};\|;\_{t});) \end{align}
+\*DeepAR
 
 **Parameters:**<br/> `h`: int, Forecast horizon. <br/> `input_size`: int,
 autorregresive inputs size, y=\[1,2,3,4\] input_size=2 -\>
@@ -159,8 +152,11 @@ optional, Custom name of the model.<br/> `optimizer`: Subclass of
 ‘torch.optim.Optimizer’, optional, user specified optimizer instead of
 the default choice (Adam).<br/> `optimizer_kwargs`: dict, optional, list
 of parameters used by the user specified `optimizer`.<br/>
-`**trainer_kwargs`: int, keyword trainer arguments inherited from
-[PyTorch Lighning’s
+`lr_scheduler`: Subclass of ‘torch.optim.lr_scheduler.LRScheduler’,
+optional, user specified lr_scheduler instead of the default choice
+(StepLR).<br/> `lr_scheduler_kwargs`: dict, optional, list of parameters
+used by the user specified `lr_scheduler`.<br/> `**trainer_kwargs`: int,
+keyword trainer arguments inherited from [PyTorch Lighning’s
 trainer](https://pytorch-lightning.readthedocs.io/en/stable/api/pytorch_lightning.trainer.trainer.trainer.html?highlight=trainer).<br/>
 
 **References**<br/> - [David Salinas, Valentin Flunkert, Jan Gasthaus,
@@ -169,17 +165,18 @@ autoregressive recurrent networks”. International Journal of
 Forecasting.](https://www.sciencedirect.com/science/article/pii/s0169207019301888)<br/> -
 [Alexander Alexandrov et. al (2020). “GluonTS: Probabilistic and Neural
 Time Series Modeling in Python”. Journal of Machine Learning
-Research.](https://www.jmlr.org/papers/v21/19-820.html)<br/>
+Research.](https://www.jmlr.org/papers/v21/19-820.html)<br/>\*
 
 ------------------------------------------------------------------------
 
 ### DeepAR.fit
 
 > ``` text
->  DeepAR.fit (dataset, val_size=0, test_size=0, random_seed=None)
+>  DeepAR.fit (dataset, val_size=0, test_size=0, random_seed=None,
+>              distributed_config=None)
 > ```
 
-Fit.
+\*Fit.
 
 The `fit` method, optimizes the neural network’s weights using the
 initialization parameters (`learning_rate`, `windows_batch_size`, …) and
@@ -202,7 +199,7 @@ see
 `val_size`: int, validation size for temporal cross-validation.<br/>
 `random_seed`: int=None, random_seed for pytorch initializer and numpy
 generators, overwrites model.\_\_init\_\_’s.<br/> `test_size`: int, test
-size for temporal cross-validation.<br/>
+size for temporal cross-validation.<br/>\*
 
 ------------------------------------------------------------------------
 
@@ -213,7 +210,7 @@ size for temporal cross-validation.<br/>
 >                  **data_module_kwargs)
 > ```
 
-Predict.
+\*Predict.
 
 Neural network prediction with PL’s `Trainer` execution of
 `predict_step`.
@@ -227,7 +224,7 @@ see
 int=None, random_seed for pytorch initializer and numpy generators,
 overwrites model.\_\_init\_\_’s.<br/> `**data_module_kwargs`: PL’s
 TimeSeriesDataModule args, see
-[documentation](https://pytorch-lightning.readthedocs.io/en/1.6.1/extensions/datamodules.html#using-a-datamodule).
+[documentation](https://pytorch-lightning.readthedocs.io/en/1.6.1/extensions/datamodules.html#using-a-datamodule).\*
 
 ## Usage Example
 

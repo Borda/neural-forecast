@@ -42,7 +42,8 @@
         "examples/save_load_models.html",
         "examples/getting_started_complete.html",
         "examples/neuralforecast_map.html",
-        "examples/how_to_add_models.html"
+        "examples/how_to_add_models.html",
+        "examples/mlflow_and_neuralforecast.html"
       ]
     },
     {
@@ -59,7 +60,9 @@
         "examples/transfer_learning.html",
         "examples/temporal_classifiers.html",
         "examples/predictive_maintenance.html",
-        "examples/statsmlneuralmethods.html"
+        "examples/multivariate_with_tsmixer.html",
+        "examples/statsmlneuralmethods.html",
+        "examples/distributed/distributed_neuralforecast.html"
       ]
     },
     {

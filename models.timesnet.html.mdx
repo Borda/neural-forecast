@@ -42,7 +42,7 @@ target="_blank" style={{ float: "right", fontSize: "smaller" }}>source</a>
 >                      init_weight=True)
 > ```
 
-Base class for all neural network modules.
+\*Base class for all neural network modules.
 
 Your models should also subclass this class.
 
@@ -71,7 +71,7 @@ parameters converted too when you call :meth:`to`, etc.
 class must be made before assignment on the child.
 
 :ivar training: Boolean represents whether this module is in training or
-evaluation mode. :vartype training: bool
+evaluation mode. :vartype training: bool\*
 
 ------------------------------------------------------------------------
 
@@ -85,7 +85,7 @@ target="_blank" style={{ float: "right", fontSize: "smaller" }}>source</a>
 >  TimesBlock (input_size, h, k, hidden_size, conv_hidden_size, num_kernels)
 > ```
 
-Base class for all neural network modules.
+\*Base class for all neural network modules.
 
 Your models should also subclass this class.
 
@@ -114,7 +114,7 @@ parameters converted too when you call :meth:`to`, etc.
 class must be made before assignment on the child.
 
 :ivar training: Boolean represents whether this module is in training or
-evaluation mode. :vartype training: bool
+evaluation mode. :vartype training: bool\*
 
 ------------------------------------------------------------------------
 
@@ -133,7 +133,7 @@ target="_blank" style={{ float: "right", fontSize: "smaller" }}>source</a>
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/Nixtla/neuralforecast/blob/main/neuralforecast/models/timesnet.py#L113"
+href="https://github.com/Nixtla/neuralforecast/blob/main/neuralforecast/models/timesnet.py#L114"
 target="_blank" style={{ float: "right", fontSize: "smaller" }}>source</a>
 
 ### TimesNet
@@ -152,13 +152,14 @@ target="_blank" style={{ float: "right", fontSize: "smaller" }}>source</a>
 >            start_padding_enabled=False, step_size:int=1,
 >            scaler_type:str='standard', random_seed:int=1,
 >            num_workers_loader:int=0, drop_last_loader:bool=False,
->            optimizer=None, optimizer_kwargs=None, **trainer_kwargs)
+>            optimizer=None, optimizer_kwargs=None, lr_scheduler=None,
+>            lr_scheduler_kwargs=None, **trainer_kwargs)
 > ```
 
-TimesNet
+\*TimesNet
 
 The TimesNet univariate model tackles the challenge of modeling multiple
-intraperiod and interperiod temporal variations.
+intraperiod and interperiod temporal variations.\*
 
 |                              | **Type** | **Default** | **Details**                                                                                                                               |
 |------|------------------|-------------------------|-------------------------|
@@ -193,6 +194,8 @@ intraperiod and interperiod temporal variations.
 | drop_last_loader             | bool     | False       | If True `TimeSeriesDataLoader` drops last non-full batch.                                                                                 |
 | optimizer                    | NoneType | None        |                                                                                                                                           |
 | optimizer_kwargs             | NoneType | None        |                                                                                                                                           |
+| lr_scheduler                 | NoneType | None        |                                                                                                                                           |
+| lr_scheduler_kwargs          | NoneType | None        |                                                                                                                                           |
 | trainer_kwargs               |          |             |                                                                                                                                           |
 
 ------------------------------------------------------------------------
@@ -200,10 +203,11 @@ intraperiod and interperiod temporal variations.
 ### TimesNet.fit
 
 > ``` text
->  TimesNet.fit (dataset, val_size=0, test_size=0, random_seed=None)
+>  TimesNet.fit (dataset, val_size=0, test_size=0, random_seed=None,
+>                distributed_config=None)
 > ```
 
-Fit.
+\*Fit.
 
 The `fit` method, optimizes the neural network’s weights using the
 initialization parameters (`learning_rate`, `windows_batch_size`, …) and
@@ -226,7 +230,7 @@ see
 `val_size`: int, validation size for temporal cross-validation.<br/>
 `random_seed`: int=None, random_seed for pytorch initializer and numpy
 generators, overwrites model.\_\_init\_\_’s.<br/> `test_size`: int, test
-size for temporal cross-validation.<br/>
+size for temporal cross-validation.<br/>\*
 
 ------------------------------------------------------------------------
 
@@ -237,7 +241,7 @@ size for temporal cross-validation.<br/>
 >                    **data_module_kwargs)
 > ```
 
-Predict.
+\*Predict.
 
 Neural network prediction with PL’s `Trainer` execution of
 `predict_step`.
@@ -251,7 +255,7 @@ see
 int=None, random_seed for pytorch initializer and numpy generators,
 overwrites model.\_\_init\_\_’s.<br/> `**data_module_kwargs`: PL’s
 TimeSeriesDataModule args, see
-[documentation](https://pytorch-lightning.readthedocs.io/en/1.6.1/extensions/datamodules.html#using-a-datamodule).
+[documentation](https://pytorch-lightning.readthedocs.io/en/1.6.1/extensions/datamodules.html#using-a-datamodule).\*
 
 ## Usage Example
 

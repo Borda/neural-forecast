@@ -60,10 +60,10 @@ target="_blank" style={{ float: "right", fontSize: "smaller" }}>source</a>
 >       batch_size:int=32, valid_batch_size:Optional[int]=None,
 >       scaler_type:str='robust', random_seed:int=1, num_workers_loader=0,
 >       drop_last_loader=False, optimizer=None, optimizer_kwargs=None,
->       **trainer_kwargs)
+>       lr_scheduler=None, lr_scheduler_kwargs=None, **trainer_kwargs)
 > ```
 
-TCN
+\*TCN
 
 Temporal Convolution Network (TCN), with MLP decoder. The historical
 encoder uses dilated skip connections to obtain efficient long memory,
@@ -107,19 +107,24 @@ optional, Custom name of the model.<br/> `optimizer`: Subclass of
 ‘torch.optim.Optimizer’, optional, user specified optimizer instead of
 the default choice (Adam).<br/> `optimizer_kwargs`: dict, optional, list
 of parameters used by the user specified `optimizer`.<br/>
+`lr_scheduler`: Subclass of ‘torch.optim.lr_scheduler.LRScheduler’,
+optional, user specified lr_scheduler instead of the default choice
+(StepLR).<br/> `lr_scheduler_kwargs`: dict, optional, list of parameters
+used by the user specified `lr_scheduler`.<br/>  
 `**trainer_kwargs`: int, keyword trainer arguments inherited from
 [PyTorch Lighning’s
-trainer](https://pytorch-lightning.readthedocs.io/en/stable/api/pytorch_lightning.trainer.trainer.trainer.html?highlight=trainer).<br/>
+trainer](https://pytorch-lightning.readthedocs.io/en/stable/api/pytorch_lightning.trainer.trainer.trainer.html?highlight=trainer).<br/>\*
 
 ------------------------------------------------------------------------
 
 ### TCN.fit
 
 > ``` text
->  TCN.fit (dataset, val_size=0, test_size=0, random_seed=None)
+>  TCN.fit (dataset, val_size=0, test_size=0, random_seed=None,
+>           distributed_config=None)
 > ```
 
-Fit.
+\*Fit.
 
 The `fit` method, optimizes the neural network’s weights using the
 initialization parameters (`learning_rate`, `batch_size`, …) and the
@@ -142,7 +147,7 @@ see
 `val_size`: int, validation size for temporal cross-validation.<br/>
 `test_size`: int, test size for temporal cross-validation.<br/>
 `random_seed`: int=None, random_seed for pytorch initializer and numpy
-generators, overwrites model.\_\_init\_\_’s.<br/>
+generators, overwrites model.\_\_init\_\_’s.<br/>\*
 
 ------------------------------------------------------------------------
 
@@ -153,7 +158,7 @@ generators, overwrites model.\_\_init\_\_’s.<br/>
 >               **data_module_kwargs)
 > ```
 
-Predict.
+\*Predict.
 
 Neural network prediction with PL’s `Trainer` execution of
 `predict_step`.
@@ -166,7 +171,7 @@ see
 int=None, random_seed for pytorch initializer and numpy generators,
 overwrites model.\_\_init\_\_’s.<br/> `**data_module_kwargs`: PL’s
 TimeSeriesDataModule args, see
-[documentation](https://pytorch-lightning.readthedocs.io/en/1.6.1/extensions/datamodules.html#using-a-datamodule).
+[documentation](https://pytorch-lightning.readthedocs.io/en/1.6.1/extensions/datamodules.html#using-a-datamodule).\*
 
 ## Usage Example
 

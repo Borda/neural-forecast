@@ -27,7 +27,7 @@ Architecture.</figcaption>
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/Nixtla/neuralforecast/blob/main/neuralforecast/models/timellm.py#L146"
+href="https://github.com/Nixtla/neuralforecast/blob/main/neuralforecast/models/timellm.py#L145"
 target="_blank" style={{ float: "right", fontSize: "smaller" }}>source</a>
 
 ### Normalize
@@ -37,7 +37,7 @@ target="_blank" style={{ float: "right", fontSize: "smaller" }}>source</a>
 >             subtract_last=False, non_norm=False)
 > ```
 
-Base class for all neural network modules.
+\*Base class for all neural network modules.
 
 Your models should also subclass this class.
 
@@ -66,12 +66,12 @@ parameters converted too when you call :meth:`to`, etc.
 class must be made before assignment on the child.
 
 :ivar training: Boolean represents whether this module is in training or
-evaluation mode. :vartype training: bool
+evaluation mode. :vartype training: bool\*
 
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/Nixtla/neuralforecast/blob/main/neuralforecast/models/timellm.py#L103"
+href="https://github.com/Nixtla/neuralforecast/blob/main/neuralforecast/models/timellm.py#L102"
 target="_blank" style={{ float: "right", fontSize: "smaller" }}>source</a>
 
 ### ReprogrammingLayer
@@ -81,7 +81,7 @@ target="_blank" style={{ float: "right", fontSize: "smaller" }}>source</a>
 >                      attention_dropout=0.1)
 > ```
 
-Base class for all neural network modules.
+\*Base class for all neural network modules.
 
 Your models should also subclass this class.
 
@@ -110,12 +110,12 @@ parameters converted too when you call :meth:`to`, etc.
 class must be made before assignment on the child.
 
 :ivar training: Boolean represents whether this module is in training or
-evaluation mode. :vartype training: bool
+evaluation mode. :vartype training: bool\*
 
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/Nixtla/neuralforecast/blob/main/neuralforecast/models/timellm.py#L88"
+href="https://github.com/Nixtla/neuralforecast/blob/main/neuralforecast/models/timellm.py#L87"
 target="_blank" style={{ float: "right", fontSize: "smaller" }}>source</a>
 
 ### FlattenHead
@@ -124,7 +124,7 @@ target="_blank" style={{ float: "right", fontSize: "smaller" }}>source</a>
 >  FlattenHead (n_vars, nf, target_window, head_dropout=0)
 > ```
 
-Base class for all neural network modules.
+\*Base class for all neural network modules.
 
 Your models should also subclass this class.
 
@@ -153,12 +153,12 @@ parameters converted too when you call :meth:`to`, etc.
 class must be made before assignment on the child.
 
 :ivar training: Boolean represents whether this module is in training or
-evaluation mode. :vartype training: bool
+evaluation mode. :vartype training: bool\*
 
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/Nixtla/neuralforecast/blob/main/neuralforecast/models/timellm.py#L60"
+href="https://github.com/Nixtla/neuralforecast/blob/main/neuralforecast/models/timellm.py#L59"
 target="_blank" style={{ float: "right", fontSize: "smaller" }}>source</a>
 
 ### PatchEmbedding
@@ -167,7 +167,7 @@ target="_blank" style={{ float: "right", fontSize: "smaller" }}>source</a>
 >  PatchEmbedding (d_model, patch_len, stride, dropout)
 > ```
 
-Base class for all neural network modules.
+\*Base class for all neural network modules.
 
 Your models should also subclass this class.
 
@@ -196,12 +196,12 @@ parameters converted too when you call :meth:`to`, etc.
 class must be made before assignment on the child.
 
 :ivar training: Boolean represents whether this module is in training or
-evaluation mode. :vartype training: bool
+evaluation mode. :vartype training: bool\*
 
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/Nixtla/neuralforecast/blob/main/neuralforecast/models/timellm.py#L37"
+href="https://github.com/Nixtla/neuralforecast/blob/main/neuralforecast/models/timellm.py#L36"
 target="_blank" style={{ float: "right", fontSize: "smaller" }}>source</a>
 
 ### TokenEmbedding
@@ -210,7 +210,7 @@ target="_blank" style={{ float: "right", fontSize: "smaller" }}>source</a>
 >  TokenEmbedding (c_in, d_model)
 > ```
 
-Base class for all neural network modules.
+\*Base class for all neural network modules.
 
 Your models should also subclass this class.
 
@@ -239,12 +239,12 @@ parameters converted too when you call :meth:`to`, etc.
 class must be made before assignment on the child.
 
 :ivar training: Boolean represents whether this module is in training or
-evaluation mode. :vartype training: bool
+evaluation mode. :vartype training: bool\*
 
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/Nixtla/neuralforecast/blob/main/neuralforecast/models/timellm.py#L26"
+href="https://github.com/Nixtla/neuralforecast/blob/main/neuralforecast/models/timellm.py#L25"
 target="_blank" style={{ float: "right", fontSize: "smaller" }}>source</a>
 
 ### ReplicationPad1d
@@ -253,7 +253,7 @@ target="_blank" style={{ float: "right", fontSize: "smaller" }}>source</a>
 >  ReplicationPad1d (padding)
 > ```
 
-Base class for all neural network modules.
+\*Base class for all neural network modules.
 
 Your models should also subclass this class.
 
@@ -282,14 +282,14 @@ parameters converted too when you call :meth:`to`, etc.
 class must be made before assignment on the child.
 
 :ivar training: Boolean represents whether this module is in training or
-evaluation mode. :vartype training: bool
+evaluation mode. :vartype training: bool\*
 
 ## 2. Model
 
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/Nixtla/neuralforecast/blob/main/neuralforecast/models/timellm.py#L221"
+href="https://github.com/Nixtla/neuralforecast/blob/main/neuralforecast/models/timellm.py#L220"
 target="_blank" style={{ float: "right", fontSize: "smaller" }}>source</a>
 
 ### TimeLLM
@@ -311,11 +311,12 @@ target="_blank" style={{ float: "right", fontSize: "smaller" }}>source</a>
 >           start_padding_enabled:bool=False, step_size:int=1,
 >           num_lr_decays:int=0, early_stop_patience_steps:int=-1,
 >           scaler_type:str='identity', num_workers_loader:int=0,
->           drop_last_loader:bool=False, random_seed:int=1,
->           **trainer_kwargs)
+>           drop_last_loader:bool=False, random_seed:int=1, optimizer=None,
+>           optimizer_kwargs=None, lr_scheduler=None,
+>           lr_scheduler_kwargs=None, **trainer_kwargs)
 > ```
 
-TimeLLM
+\*TimeLLM
 
 Time-LLM is a reprogramming framework to repurpose an off-the-shelf LLM
 for time series forecasting.
@@ -374,24 +375,33 @@ scalers](https://nixtla.github.io/neuralforecast/common.scalers.html).<br/>
 generators.<br/> `num_workers_loader`: int=os.cpu_count(), workers to be
 used by `TimeSeriesDataLoader`.<br/> `drop_last_loader`: bool=False, if
 True `TimeSeriesDataLoader` drops last non-full batch.<br/> `alias`: str,
-optional, Custom name of the model.<br/> `**trainer_kwargs`: int, keyword
-trainer arguments inherited from [PyTorch Lighning’s
+optional, Custom name of the model.<br/> `optimizer`: Subclass of
+‘torch.optim.Optimizer’, optional, user specified optimizer instead of
+the default choice (Adam).<br/> `optimizer_kwargs`: dict, optional, list
+of parameters used by the user specified `optimizer`.<br/>  
+`lr_scheduler`: Subclass of ‘torch.optim.lr_scheduler.LRScheduler’,
+optional, user specified lr_scheduler instead of the default choice
+(StepLR).<br/> `lr_scheduler_kwargs`: dict, optional, list of parameters
+used by the user specified `lr_scheduler`.<br/> `**trainer_kwargs`: int,
+keyword trainer arguments inherited from [PyTorch Lighning’s
 trainer](https://pytorch-lightning.readthedocs.io/en/stable/api/pytorch_lightning.trainer.trainer.trainer.html?highlight=trainer).<br/>
 
 **References:**<br/> -[Ming Jin, Shiyu Wang, Lintao Ma, Zhixuan Chu,
 James Y. Zhang, Xiaoming Shi, Pin-Yu Chen, Yuxuan Liang, Yuan-Fang Li,
 Shirui Pan, Qingsong Wen. “Time-LLM: Time Series Forecasting by
-Reprogramming Large Language Models”](https://arxiv.org/abs/2310.01728)
+Reprogramming Large Language
+Models”](https://arxiv.org/abs/2310.01728)\*
 
 ------------------------------------------------------------------------
 
 ### TimeLLM.fit
 
 > ``` text
->  TimeLLM.fit (dataset, val_size=0, test_size=0, random_seed=None)
+>  TimeLLM.fit (dataset, val_size=0, test_size=0, random_seed=None,
+>               distributed_config=None)
 > ```
 
-Fit.
+\*Fit.
 
 The `fit` method, optimizes the neural network’s weights using the
 initialization parameters (`learning_rate`, `windows_batch_size`, …) and
@@ -414,7 +424,7 @@ see
 `val_size`: int, validation size for temporal cross-validation.<br/>
 `random_seed`: int=None, random_seed for pytorch initializer and numpy
 generators, overwrites model.\_\_init\_\_’s.<br/> `test_size`: int, test
-size for temporal cross-validation.<br/>
+size for temporal cross-validation.<br/>\*
 
 ------------------------------------------------------------------------
 
@@ -425,7 +435,7 @@ size for temporal cross-validation.<br/>
 >                   **data_module_kwargs)
 > ```
 
-Predict.
+\*Predict.
 
 Neural network prediction with PL’s `Trainer` execution of
 `predict_step`.
@@ -439,7 +449,7 @@ see
 int=None, random_seed for pytorch initializer and numpy generators,
 overwrites model.\_\_init\_\_’s.<br/> `**data_module_kwargs`: PL’s
 TimeSeriesDataModule args, see
-[documentation](https://pytorch-lightning.readthedocs.io/en/1.6.1/extensions/datamodules.html#using-a-datamodule).
+[documentation](https://pytorch-lightning.readthedocs.io/en/1.6.1/extensions/datamodules.html#using-a-datamodule).\*
 
 ## Usage example
 
